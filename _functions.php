@@ -58,7 +58,7 @@ function url($url = null){
 function add_kary($karyawan){
 	global $koneksi;
 
-	$nama			= htmlspecialchars($karyawan['nama']);
+	$nama		= htmlspecialchars($karyawan['nama']);
 	$username	= htmlspecialchars($karyawan['username']);
 	$email		= htmlspecialchars($karyawan['email']);
 	$password	= stripcslashes(htmlspecialchars($karyawan['password']));
