@@ -262,13 +262,13 @@ function order_ck($order_ck){
 		$limitNum = substr($str, 0,7);
 		$orderNum = 'CK-' . strtoupper($limitNum);
 	}
-	
-	$insert_ck = "INSERT INTO tb_order_ck VALUES( 
-		'','$orderNum','$nama_pel','$no_telp','$alamat',
+
+	$insert_ck = "INSERT INTO tb_order_ck (or_ck_number, nama_pel_ck, no_telp_ck, alamat_ck, jenis_paket_ck, waktu_kerja_ck, berat_qty_ck, tarif_ck, tgl_masuk_ck, tgl_keluar_ck, tot_bayar, keterangan_ck, status, metode_pengambilan) VALUES(
+		'$orderNum','$nama_pel','$no_telp','$alamat',
 		'$jns_pkt','$wkt_kerja_ck','$berat_qty','$tarif_perkilo',
 		'$tgl_masuk','$tgl_keluar','$total_bayar',
 		'$ket','Pending','$metode' )";
-	
+
 	mysqli_query($koneksi,$insert_ck);
 	
 	// Cek apakah berhasil
@@ -317,8 +317,8 @@ function order_dc($order_dc){
 		$orderNum_dc = 'DC-' . strtoupper($limitNum);
 	}
 
-	$query_dc = "INSERT INTO tb_order_dc VALUES (
-		'','$orderNum_dc','$nama_pel_dc','$no_telp','$alamat_dc','$jns_paket','$wkt_kerja_dc',
+	$query_dc = "INSERT INTO tb_order_dc (or_dc_number, nama_pel_dc, no_telp_dc, alamat_dc, jenis_paket_dc, waktu_kerja_dc, berat_qty_dc, tarif_dc, tgl_masuk_dc, tgl_keluar_dc, tot_bayar, keterangan_dc, status, metode_pengambilan) VALUES (
+		'$orderNum_dc','$nama_pel_dc','$no_telp','$alamat_dc','$jns_paket','$wkt_kerja_dc',
 		'$berat_dc','$trf_dc','$tgl_msk_dc','$tgl_kel_dc','$tot_bayar_dc','$ket_dc','Pending','$metode'
 	)";
 
@@ -368,11 +368,11 @@ function order_cs($order_cs){
 		$orderNum_cs = 'CS-' . strtoupper($limitNo_cs);
 	}
 
-	$query_cs = "INSERT INTO tb_order_cs VALUES (
-		'','$orderNum_cs','$nama_pel_cs','$no_telp_cs','$alamat_cs','$jenis_pkt_cs',
+	$query_cs = "INSERT INTO tb_order_cs (or_cs_number, nama_pel_cs, no_telp_cs, alamat_cs, jenis_paket_cs, waktu_kerja_cs, berat_qty_cs, tarif_cs, tgl_masuk_cs, tgl_keluar_cs, tot_bayar, keterangan_cs, status, metode_pengambilan) VALUES (
+		'$orderNum_cs','$nama_pel_cs','$no_telp_cs','$alamat_cs','$jenis_pkt_cs',
 		'$wkt_krj_cs','$jml_pcs','$trf_cs','$tgl_msk_cs','$tgl_kel_cs','$totBayar_cs','$ket_cs','Pending','$metode'
 	)";
-	
+
 	mysqli_query($koneksi,$query_cs);
 	
 	// Cek apakah berhasil
