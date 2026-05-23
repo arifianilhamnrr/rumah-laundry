@@ -64,9 +64,22 @@
 		* {
 			transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 		}
+		html, body {
+			height: 100%;
+		}
+		body {
+			display: flex;
+			flex-direction: column;
+		}
+		main {
+			flex: 1 0 auto;
+		}
+		footer {
+			flex-shrink: 0;
+		}
 	</style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 min-h-screen transition-colors duration-200">
+<body class="bg-slate-50 dark:bg-slate-900 transition-colors duration-200">
 
 	<!-- Modal Component Script -->
 	<script src="<?=url('_assets/js/modal.js')?>"></script>
