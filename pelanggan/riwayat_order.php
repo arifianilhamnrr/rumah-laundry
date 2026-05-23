@@ -19,7 +19,7 @@ if(!empty($search)){
 ?>
 
 <!-- Clean Order History Page -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<main class="container mx-auto px-4 lg:px-8 py-6">
 	<!-- Page Header -->
 	<div class="flex justify-between items-center mb-6">
 		<div>
