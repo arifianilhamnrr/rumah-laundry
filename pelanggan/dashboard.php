@@ -52,91 +52,69 @@
 			</div>
 		</div>
 	</div>
-						</h3>
-					</div>
-					<div class="bg-gradient-to-br from-green-500 to-green-600 rounded-full p-4">
-						<i class="fas fa-user-check text-white text-2xl"></i>
-					</div>
-				</div>
-			</div>
-			<div class="bg-gradient-to-r from-green-500 to-green-600 h-1"></div>
-		</div>
-	</div>
 
 	<!-- Quick Actions -->
-	<div class="mb-8">
-		<div class="bg-white rounded-xl shadow-lg overflow-hidden">
-			<div class="p-6 border-b border-gray-200">
-				<h2 class="text-xl font-bold text-gray-900 flex items-center">
-					<i class="fas fa-rocket text-primary-600 mr-2"></i>
-					Menu Cepat
-				</h2>
-			</div>
-			<div class="p-6">
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-					<!-- Order Baru -->
-					<a href="order_baru.php" class="group">
-						<div class="bg-gradient-to-br from-primary-500 to-primary-600 text-white p-6 rounded-xl text-center transition-all transform hover:scale-105 hover:shadow-xl">
-							<div class="text-4xl mb-3">
-								<i class="fas fa-tshirt"></i>
-							</div>
-							<h4 class="font-bold text-lg mb-2">Order Baru</h4>
-							<p class="text-sm text-primary-100">Pesan layanan laundry</p>
-						</div>
-					</a>
-
-					<!-- Riwayat Order -->
-					<a href="riwayat_order.php" class="group">
-						<div class="bg-gradient-to-br from-pink-500 to-rose-600 text-white p-6 rounded-xl text-center transition-all transform hover:scale-105 hover:shadow-xl">
-							<div class="text-4xl mb-3">
-								<i class="fas fa-history"></i>
-							</div>
-							<h4 class="font-bold text-lg mb-2">Riwayat Order</h4>
-							<p class="text-sm text-pink-100">Lihat pesanan Anda</p>
-						</div>
-					</a>
-
-					<!-- Profil -->
-					<a href="profil.php" class="group">
-						<div class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white p-6 rounded-xl text-center transition-all transform hover:scale-105 hover:shadow-xl">
-							<div class="text-4xl mb-3">
-								<i class="fas fa-user-circle"></i>
-							</div>
-							<h4 class="font-bold text-lg mb-2">Profil Saya</h4>
-							<p class="text-sm text-cyan-100">Edit profil Anda</p>
-						</div>
-					</a>
+	<div class="mb-6">
+		<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Menu Cepat</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+			<!-- Order Baru -->
+			<a href="order_baru.php" class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-md transition-all group">
+				<div class="flex flex-col items-center text-center">
+					<div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+						<i class="fas fa-tshirt text-blue-600 dark:text-blue-400 text-2xl"></i>
+					</div>
+					<h4 class="font-semibold text-slate-900 dark:text-white mb-1">Order Baru</h4>
+					<p class="text-xs text-slate-600 dark:text-slate-400">Pesan layanan laundry</p>
 				</div>
-			</div>
+			</a>
+
+			<!-- Riwayat Order -->
+			<a href="riwayat_order.php" class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-md transition-all group">
+				<div class="flex flex-col items-center text-center">
+					<div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+						<i class="fas fa-history text-purple-600 dark:text-purple-400 text-2xl"></i>
+					</div>
+					<h4 class="font-semibold text-slate-900 dark:text-white mb-1">Riwayat Order</h4>
+					<p class="text-xs text-slate-600 dark:text-slate-400">Lihat pesanan Anda</p>
+				</div>
+			</a>
+
+			<!-- Profil -->
+			<a href="profil.php" class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-md transition-all group">
+				<div class="flex flex-col items-center text-center">
+					<div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+						<i class="fas fa-user-circle text-green-600 dark:text-green-400 text-2xl"></i>
+					</div>
+					<h4 class="font-semibold text-slate-900 dark:text-white mb-1">Profil Saya</h4>
+					<p class="text-xs text-slate-600 dark:text-slate-400">Edit profil Anda</p>
+				</div>
+			</a>
 		</div>
 	</div>
 
 	<!-- Recent Orders -->
-	<div class="mb-8">
-		<div class="bg-white rounded-xl shadow-lg overflow-hidden">
-			<div class="p-6 border-b border-gray-200 flex justify-between items-center">
-				<h2 class="text-xl font-bold text-gray-900 flex items-center">
-					<i class="fas fa-box text-primary-600 mr-2"></i>
-					Order Terbaru
-				</h2>
-				<a href="riwayat_order.php" class="inline-flex items-center space-x-1 text-primary-600 hover:text-primary-700 font-semibold text-sm transition-colors">
-					<span>Lihat Semua</span>
-					<i class="fas fa-arrow-right"></i>
-				</a>
-			</div>
+	<div class="mb-6">
+		<div class="flex justify-between items-center mb-4">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Order Terbaru</h2>
+			<a href="riwayat_order.php" class="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1">
+				<span>Lihat Semua</span>
+				<i class="fas fa-arrow-right text-xs"></i>
+			</a>
+		</div>
 
+		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
 			<div class="overflow-x-auto">
 				<table class="w-full">
-					<thead class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
+					<thead class="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">
 						<tr>
-							<th class="px-6 py-4 text-left text-sm font-semibold">No. Order</th>
-							<th class="px-6 py-4 text-left text-sm font-semibold">Tanggal</th>
-							<th class="px-6 py-4 text-left text-sm font-semibold">Jenis Paket</th>
-							<th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
-							<th class="px-6 py-4 text-left text-sm font-semibold">Total</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">No. Order</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Tanggal</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Jenis Paket</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Status</th>
+							<th class="px-4 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-300 uppercase tracking-wider">Total</th>
 						</tr>
 					</thead>
-					<tbody class="divide-y divide-gray-200">
+					<tbody class="divide-y divide-slate-200 dark:divide-slate-700">
 						<?php
 						$recent_orders = array_slice(get_order_pelanggan($nama_pelanggan), 0, 5);
 						if(!empty($recent_orders)):
@@ -163,36 +141,36 @@
 								}
 
 								// Status badge styling
-								$statusClass = 'bg-gray-100 text-gray-800';
+								$statusClass = 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300';
 								$statusIcon = 'fa-clock';
 								if($status == 'Pending') {
-									$statusClass = 'bg-yellow-100 text-yellow-800';
+									$statusClass = 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400';
 									$statusIcon = 'fa-clock';
 								} elseif($status == 'Proses') {
-									$statusClass = 'bg-blue-100 text-blue-800';
+									$statusClass = 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400';
 									$statusIcon = 'fa-spinner';
 								} elseif($status == 'Selesai') {
-									$statusClass = 'bg-green-100 text-green-800';
+									$statusClass = 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400';
 									$statusIcon = 'fa-check-circle';
 								}
 						?>
-						<tr class="hover:bg-gray-50 transition-colors">
-							<td class="px-6 py-4 text-sm font-medium text-gray-900"><?= htmlspecialchars($no_order) ?></td>
-							<td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($tgl) ?></td>
-							<td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($paket) ?></td>
-							<td class="px-6 py-4">
-								<span class="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-semibold <?= $statusClass ?>">
+						<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+							<td class="px-4 py-3 text-sm font-medium text-slate-900 dark:text-white"><?= htmlspecialchars($no_order) ?></td>
+							<td class="px-4 py-3 text-sm text-slate-600 dark:text-slate-400"><?= htmlspecialchars($tgl) ?></td>
+							<td class="px-4 py-3 text-sm text-slate-600 dark:text-slate-400"><?= htmlspecialchars($paket) ?></td>
+							<td class="px-4 py-3">
+								<span class="inline-flex items-center space-x-1 px-2 py-1 rounded-md text-xs font-medium <?= $statusClass ?>">
 									<i class="fas <?= $statusIcon ?>"></i>
 									<span><?= htmlspecialchars($status) ?></span>
 								</span>
 							</td>
-							<td class="px-6 py-4 text-sm font-semibold text-gray-900">Rp <?= number_format($total, 0, ',', '.') ?></td>
+							<td class="px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white">Rp <?= number_format($total, 0, ',', '.') ?></td>
 						</tr>
 						<?php endforeach; else: ?>
 						<tr>
-							<td colspan="5" class="px-6 py-8 text-center text-gray-500">
-								<i class="fas fa-inbox text-4xl mb-3 text-gray-300"></i>
-								<p>Belum ada order. <a href="order_baru.php" class="text-primary-600 hover:underline font-semibold">Buat order sekarang!</a></p>
+							<td colspan="5" class="px-4 py-8 text-center text-slate-500 dark:text-slate-400">
+								<i class="fas fa-inbox text-3xl mb-2 text-slate-300 dark:text-slate-600"></i>
+								<p>Belum ada order. <a href="order_baru.php" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Buat order sekarang!</a></p>
 							</td>
 						</tr>
 						<?php endif; ?>

@@ -124,32 +124,3 @@
 			</div>
 		</div>
 	</header>
-					</div>
-				</div>
-			</div>
-		</nav>
-
-		<!-- Sub Navigation -->
-		<div class="bg-gradient-to-r from-primary-500 to-secondary-400 border-t border-white/10">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="flex space-x-1 overflow-x-auto py-2 scrollbar-hide">
-					<a href="<?=url('pelanggan/dashboard.php')?>" class="flex items-center space-x-2 px-4 py-2 text-white hover:bg-white/20 rounded-lg transition-all whitespace-nowrap">
-						<i class="fas fa-home"></i>
-						<span>Dashboard</span>
-					</a>
-					<a href="<?=url('pelanggan/order_baru.php')?>" class="flex items-center space-x-2 px-4 py-2 text-white hover:bg-white/20 rounded-lg transition-all whitespace-nowrap">
-						<i class="fas fa-plus-circle"></i>
-						<span>Order Baru</span>
-					</a>
-					<a href="<?=url('pelanggan/riwayat_order.php')?>" class="flex items-center space-x-2 px-4 py-2 text-white hover:bg-white/20 rounded-lg transition-all whitespace-nowrap">
-						<i class="fas fa-history"></i>
-						<span>Riwayat Order</span>
-					</a>
-					<a href="<?=url('pelanggan/profil.php')?>" class="flex items-center space-x-2 px-4 py-2 text-white hover:bg-white/20 rounded-lg transition-all whitespace-nowrap">
-						<i class="fas fa-user-cog"></i>
-						<span>Profil</span>
-					</a>
-				</div>
-			</div>
-		</div>
-	</header>

@@ -76,7 +76,6 @@
 		}
 	?>
 
-	<!-- Main Container -->
 	<!-- Clean Minimalist Login Container -->
 	<div class="w-full max-w-md">
 		<div class="bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-8">
@@ -155,28 +154,6 @@
 			</form>
 		</div>
 	</div>
-				<div class="absolute w-[60px] h-[60px] top-24 left-8 rounded-full bg-white/10 animate-pulse"></div>
-
-				<!-- Content -->
-				<div class="text-center text-white relative z-10">
-					<h1 class="text-5xl font-bold mb-4 animate-fade-in-up">Admin Laundry</h1>
-					<p class="text-lg opacity-90 mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">
-						Kelola bisnis laundry Anda dengan mudah dan efisien
-					</p>
-
-					<!-- Washing Machine SVG Icon -->
-					<div class="mt-8 animate-fade-in-up" style="animation-delay: 0.4s;">
-						<i class="fas fa-tshirt text-9xl opacity-20"></i>
-					</div>
-				</div>
-
-				<!-- Floating Bubbles -->
-				<div class="absolute top-24 left-12 w-4 h-4 bg-white/30 rounded-full animate-float"></div>
-				<div class="absolute top-32 right-20 w-6 h-6 bg-white/20 rounded-full animate-float" style="animation-delay: 1s;"></div>
-				<div class="absolute bottom-32 left-24 w-5 h-5 bg-white/25 rounded-full animate-float" style="animation-delay: 2s;"></div>
-			</div>
-		</div>
-	</div>
 
 	<!-- Error Modal -->
 	<?php if ($showError): ?>
@@ -193,6 +170,9 @@
 
 	<!-- Modal Script -->
 	<script src="<?=url('_assets/js/modal.js')?>"></script>
+
+	<!-- Theme Manager Script -->
+	<script src="<?=url('_assets/js/theme.js')?>"></script>
 
 	<script>
 		// Toggle password visibility
@@ -211,5 +191,4 @@
 	</script>
 
 </body>
-</html>
 </html>
