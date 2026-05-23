@@ -106,7 +106,7 @@
 									<i class="fas fa-user-circle w-4"></i>
 									<span>Profil</span>
 								</a>
-								<a href="<?=url('logout_pelanggan.php')?>" class="flex items-center space-x-2 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20">
+								<a href="<?=url('pelanggan/logout.php')?>" class="flex items-center space-x-2 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20">
 									<i class="fas fa-sign-out-alt w-4"></i>
 									<span>Logout</span>
 								</a>
