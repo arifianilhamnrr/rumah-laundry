@@ -1,59 +1,79 @@
-<?php require_once('header_pelanggan.php'); 
+<?php require_once('header_pelanggan.php');
 
 $data_pelanggan = get_pelanggan($id_pelanggan);
 ?>
 
-<div class="main-content" id="order_pelanggan">
-	<div class="container">
-		<div class="baris">
-			<div class="col mt-2">
-				<div class="card">
-					<div class="card-title card-flex">
-						<div class="card-col">
-							<h2>🧺 Buat Order Baru</h2>
+<!-- Main Content with Tailwind -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+	<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+		<!-- Header -->
+		<div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gradient-to-r from-primary-50 to-secondary-50">
+			<h2 class="text-2xl font-bold text-gray-900 flex items-center">
+				<i class="fas fa-tshirt text-primary-600 mr-3"></i>
+				Buat Order Baru
+			</h2>
+			<a href="dashboard.php" class="inline-flex items-center space-x-2 px-4 py-2 bg-white text-primary-600 rounded-lg font-semibold shadow hover:shadow-md transition-all hover:scale-105">
+				<i class="fas fa-arrow-left"></i>
+				<span>Kembali</span>
+			</a>
+		</div>
+
+		<!-- Body -->
+		<div class="p-8">
+			<div class="text-center mb-8">
+				<h3 class="text-xl font-semibold text-gray-800 mb-2">Pilih Jenis Paket</h3>
+				<p class="text-gray-600">Pilih layanan laundry yang Anda butuhkan</p>
+			</div>
+
+			<!-- Package Cards -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<!-- Cuci Komplit -->
+				<a href="order_ck.php" class="group">
+					<div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center transition-all hover:border-primary-500 hover:shadow-xl transform hover:-translate-y-2">
+						<div class="mb-4 transform group-hover:scale-110 transition-transform">
+							<i class="fas fa-soap text-6xl text-primary-500"></i>
 						</div>
-						<div class="card-col txt-right">
-							<a href="dashboard.php" class="btn-xs bg-primary">Kembali</a>
-						</div>
-					</div>
-
-					<div class="card-body mt-2">
-						<div class="col">
-							<div class="order-sub-judul txt-center">
-								<h3 class="mb-1">Pilih Jenis Paket</h3>
-							</div>
-
-							<div class="container-paket">
-								<div class="col-paket">
-									<a href="order_ck.php" class="paket">
-										<img src="<?=url('_assets/img/cuci_komplit.png')?>" alt="cuci komplit" width="160">
-										<h4>Cuci Komplit</h4>
-										<p style="font-size: 14px; color: #666; margin-top: 10px;">Cuci + Setrika</p>
-									</a>
-								</div>
-
-								<div class="col-paket">
-									<a href="order_dc.php" class="paket">
-										<img src="<?=url('_assets/img/dry_clean.png')?>" alt="dry clean" width="160">
-										<h4>Dry Clean</h4>
-										<p style="font-size: 14px; color: #666; margin-top: 10px;">Cuci Kering</p>
-									</a>
-								</div>
-
-								<div class="col-paket">
-									<a href="order_cs.php" class="paket">
-										<img src="<?=url('_assets/img/kemeja_2.png')?>" alt="cuci satuan" width="160">
-										<h4>Cuci Satuan</h4>
-										<p style="font-size: 14px; color: #666; margin-top: 10px;">Per Item</p>
-									</a>
-								</div>
-							</div>
+						<h4 class="text-xl font-bold text-gray-900 mb-2">Cuci Komplit</h4>
+						<p class="text-sm text-gray-600 mb-4">Cuci + Setrika</p>
+						<div class="inline-flex items-center space-x-2 text-primary-600 font-semibold">
+							<span>Pilih Paket</span>
+							<i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
 						</div>
 					</div>
-				</div>
+				</a>
+
+				<!-- Dry Clean -->
+				<a href="order_dc.php" class="group">
+					<div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center transition-all hover:border-purple-500 hover:shadow-xl transform hover:-translate-y-2">
+						<div class="mb-4 transform group-hover:scale-110 transition-transform">
+							<i class="fas fa-wind text-6xl text-purple-500"></i>
+						</div>
+						<h4 class="text-xl font-bold text-gray-900 mb-2">Dry Clean</h4>
+						<p class="text-sm text-gray-600 mb-4">Cuci Kering</p>
+						<div class="inline-flex items-center space-x-2 text-purple-600 font-semibold">
+							<span>Pilih Paket</span>
+							<i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+						</div>
+					</div>
+				</a>
+
+				<!-- Cuci Satuan -->
+				<a href="order_cs.php" class="group">
+					<div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center transition-all hover:border-green-500 hover:shadow-xl transform hover:-translate-y-2">
+						<div class="mb-4 transform group-hover:scale-110 transition-transform">
+							<i class="fas fa-tshirt text-6xl text-green-500"></i>
+						</div>
+						<h4 class="text-xl font-bold text-gray-900 mb-2">Cuci Satuan</h4>
+						<p class="text-sm text-gray-600 mb-4">Per Item</p>
+						<div class="inline-flex items-center space-x-2 text-green-600 font-semibold">
+							<span>Pilih Paket</span>
+							<i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+						</div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
-</div>
+</main>
 
 <?php require_once('footer_pelanggan.php'); ?>
