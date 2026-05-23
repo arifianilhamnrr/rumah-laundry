@@ -1,134 +1,157 @@
-<div class="col">
-   <div class="card">
-      <div class="card-title card-flex">
-         <div class="card-col">
-            <h2>Order Cuci Komplit</h2>	
-         </div>
-      </div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+	<!-- Card Header -->
+	<div class="p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-secondary-50">
+		<h2 class="text-xl font-bold text-gray-900 flex items-center">
+			<i class="fas fa-soap text-primary-600 mr-3"></i>
+			Order Cuci Komplit
+		</h2>
+	</div>
 
-      <div class="card-body">
+	<div class="p-6">
+		<!-- Search & Print Section -->
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+			<!-- Search Form -->
+			<form method="GET" class="flex gap-2 items-center flex-1">
+				<input type="text" name="cari_ck" placeholder="Cari order (nama / nomor / paket)"
+					value="<?= isset($_GET['cari_ck']) ? $_GET['cari_ck'] : ''; ?>"
+					class="flex-1 min-w-[240px] px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 transition-all">
+				<button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+					<i class="fas fa-search mr-1"></i>Cari
+				</button>
+				<a href="index.php" class="px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold hover:bg-gray-600 transition-colors">
+					<i class="fas fa-redo mr-1"></i>Reset
+				</a>
+			</form>
 
-         <!-- 🔍 Form Pencarian + 🖨 Cetak Laporan Bulanan -->
-         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-            <form method="GET" style="display:flex; gap:8px; align-items:center;">
-               <input type="text" name="cari_ck" placeholder="Cari order (nama / nomor / paket)" 
-                  value="<?= isset($_GET['cari_ck']) ? $_GET['cari_ck'] : ''; ?>"
-                  style="padding:6px 10px; border:1px solid #ccc; border-radius:5px; flex:1; min-width:240px;">
-               <button type="submit" style="padding:6px 12px; background:#007bff; color:#fff; border:none; border-radius:5px;">Cari</button>
-               <a href="index.php" style="padding:6px 12px; background:#6c757d; color:white; text-decoration:none; border-radius:5px;">Reset</a>
-            </form>
+			<!-- Print Form -->
+			<form action="laporan_ck.php" method="GET" target="_blank" class="flex gap-2 items-center">
+				<input type="month" name="bulan" required class="px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-primary-500 transition-all">
+				<button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
+					<i class="fas fa-print mr-1"></i>Cetak
+				</button>
+			</form>
+		</div>
 
-            <form action="laporan_ck.php" method="GET" target="_blank" style="display:flex; gap:8px; align-items:center;">
-               <input type="month" name="bulan" required style="padding:6px 10px; border:1px solid #ccc; border-radius:5px;">
-               <button type="submit" style="padding:6px 12px; background:#28a745; color:#fff; border:none; border-radius:5px;">🖨 Cetak</button>
-            </form>
-         </div>
+		<!-- Table -->
+		<div class="overflow-x-auto">
+			<table class="w-full">
+				<thead class="bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
+					<tr>
+						<th class="px-4 py-3 text-left text-sm font-semibold">No</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">No.Order</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Tgl Order</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Nama Pelanggan</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Jenis Paket</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Waktu Kerja</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Berat (Kg)</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Metode</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Status</th>
+						<th class="px-4 py-3 text-left text-sm font-semibold">Action</th>
+					</tr>
+				</thead>
 
-         <div class="tabel-kontainer">
-            <table class="tabel-transaksi">
-               <thead>
-                  <tr>
-                     <th class="sticky">No</th>
-                     <th class="sticky">No.Order</th>
-                     <th class="sticky">Tgl Order</th>
-                     <th class="sticky">Nama Pelanggan</th>
-                     <th class="sticky">Jenis Paket</th>
-                     <th class="sticky">Waktu Kerja</th>
-                     <th class="sticky">Berat (Kg)</th>
-                     <th class="sticky">Metode</th>
-                     <th class="sticky">Status</th>
-                     <th class="sticky">Action</th>
-                  </tr>
-               </thead>
+				<tbody class="divide-y divide-gray-200">
+					<?php
+					$where = "";
+					if (!empty($_GET['cari_ck'])) {
+						$cari = mysqli_real_escape_string($koneksi, $_GET['cari_ck']);
+						$where = "WHERE or_ck_number LIKE '%$cari%' OR nama_pel_ck LIKE '%$cari%' OR jenis_paket_ck LIKE '%$cari%'";
+					}
 
-               <tbody>
-                  <?php 
-                  $where = "";
-                  if (!empty($_GET['cari_ck'])) {
-                     $cari = mysqli_real_escape_string($koneksi, $_GET['cari_ck']);
-                     $where = "WHERE or_ck_number LIKE '%$cari%' OR nama_pel_ck LIKE '%$cari%' OR jenis_paket_ck LIKE '%$cari%'";
-                  }
+					$cuci_komplit = query("SELECT * FROM tb_order_ck $where ORDER BY id_order_ck DESC");
+					if (!empty($cuci_komplit)) :
+						$no_ck = 1;
+						foreach($cuci_komplit as $ck) : ?>
+						<tr class="hover:bg-gray-50 transition-colors">
+							<td class="px-4 py-3 text-sm text-gray-900"><?= $no_ck; ?></td>
+							<td class="px-4 py-3 text-sm font-semibold text-gray-900"><?= $ck['or_ck_number'] ?></td>
+							<td class="px-4 py-3 text-sm text-gray-600"><?= $ck['tgl_masuk_ck'] ?></td>
+							<td class="px-4 py-3 text-sm text-gray-600"><?= $ck['nama_pel_ck'] ?></td>
+							<td class="px-4 py-3 text-sm text-gray-600"><?= $ck['jenis_paket_ck'] ?></td>
+							<td class="px-4 py-3 text-sm text-gray-600"><?= $ck['wkt_krj_ck'] ?></td>
+							<td class="px-4 py-3 text-sm text-gray-600"><?= $ck['berat_qty_ck'] . ' Kg' ?></td>
 
-                  $cuci_komplit = query("SELECT * FROM tb_order_ck $where ORDER BY id_order_ck DESC");
-                  if (!empty($cuci_komplit)) :
-                     $no_ck = 1;
-                     foreach($cuci_komplit as $ck) : ?>
-                     <tr>
-                        <td><?= $no_ck; ?></td>
-                        <td><?= $ck['or_ck_number'] ?></td>
-                        <td><?= $ck['tgl_masuk_ck'] ?></td>
-                        <td><?= $ck['nama_pel_ck'] ?></td>
-                        <td><?= $ck['jenis_paket_ck'] ?></td>
-                        <td><?= $ck['wkt_krj_ck'] ?></td>
-                        <td><?= $ck['berat_qty_ck'] . ' Kg' ?></td>
+							<!-- Metode Pengambilan -->
+							<td class="px-4 py-3 text-sm">
+								<?php
+								$metode = isset($ck['metode_pengambilan']) ? $ck['metode_pengambilan'] : 'Ambil di Tempat';
+								$icon = ($metode == 'Antar Jemput') ? 'fa-truck' : 'fa-home';
+								$color = ($metode == 'Antar Jemput') ? 'text-orange-600' : 'text-green-600';
+								?>
+								<span class="inline-flex items-center space-x-1 <?= $color ?> font-semibold">
+									<i class="fas <?= $icon ?>"></i>
+									<span><?= $metode ?></span>
+								</span>
+							</td>
 
-                        <!-- KOLOM METODE PENGAMBILAN (HARUS DULUAN!) -->
-                        <td>
-                           <?php 
-                           $metode = isset($ck['metode_pengambilan']) ? $ck['metode_pengambilan'] : 'Ambil di Tempat';
-                           $icon = ($metode == 'Antar Jemput') ? '🚚' : '🏠';
-                           $color = ($metode == 'Antar Jemput') ? 'color: #e17055; font-weight: 600;' : 'color: #00b894;';
-                           ?>
-                           <span style="<?= $color ?> font-size: 12px;">
-                              <?= $icon ?> <?= $metode ?>
-                           </span>
-                        </td>
-                        
-                        <!-- KOLOM STATUS (SETELAH METODE!) -->
-                        <td>
-                           <?php 
-                           $status = $ck['status'] ?? 'Pending';
-                           $badge_color = '';
-                           if($status == 'Pending') {
-                              $badge_color = 'background: #ffeaa7; color: #d63031;';
-                           } elseif($status == 'Diproses') {
-                              $badge_color = 'background: #74b9ff; color: #0984e3;';
-                           } elseif($status == 'Selesai') {
-                              $badge_color = 'background: #55efc4; color: #00b894;';
-                           } elseif($status == 'Sedang Diantar') {
-                              $badge_color = 'background: #fdcb6e; color: #e17055;';
-                           } elseif($status == 'Diambil') {
-                              $badge_color = 'background: #dfe6e9; color: #636e72;';
-                           }
-                           ?>
-                           <span style="<?= $badge_color ?> padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; display: inline-block;">
-                              <?= $status ?>
-                           </span>
-                        </td>
+							<!-- Status Badge -->
+							<td class="px-4 py-3">
+								<?php
+								$status = $ck['status'] ?? 'Pending';
+								$badge_class = '';
+								if($status == 'Pending') {
+									$badge_class = 'bg-yellow-100 text-yellow-800';
+								} elseif($status == 'Diproses') {
+									$badge_class = 'bg-blue-100 text-blue-800';
+								} elseif($status == 'Selesai') {
+									$badge_class = 'bg-green-100 text-green-800';
+								} elseif($status == 'Sedang Diantar') {
+									$badge_class = 'bg-orange-100 text-orange-800';
+								} elseif($status == 'Diambil') {
+									$badge_class = 'bg-gray-100 text-gray-800';
+								}
+								?>
+								<span class="inline-block px-3 py-1 rounded-full text-xs font-semibold <?= $badge_class ?>">
+									<?= $status ?>
+								</span>
+							</td>
 
-                        <td>
-                           <a href="<?=url('detail_order/detail_ck/detail_order_ck.php?or_ck_number=')?><?=$ck['or_ck_number']?>" class="btn btn-detail">Detail</a>
-                           <a href="<?=url('daftar_order/hapus_ck.php?or_ck_number=')?><?=$ck['or_ck_number']?>" onclick="return confirm('Yakin akan menghapus?');" class="btn btn-hapus">Hapus</a>
-                           <!-- Dropdown Update Status -->
-                           <select onchange="updateStatus(this.value, '<?=$ck['or_ck_number']?>', 'ck')" style="padding: 5px; margin-top: 5px; border-radius: 4px; border: 1px solid #ddd;">
-                              <option value="">-- Update Status --</option>
-                              <option value="Pending" <?= (isset($ck['status']) && $ck['status'] == 'Pending') ? 'selected' : '' ?>>⏳ Pending</option>
-                              <option value="Diproses" <?= (isset($ck['status']) && $ck['status'] == 'Diproses') ? 'selected' : '' ?>>🔄 Diproses</option>
-                              <option value="Selesai" <?= (isset($ck['status']) && $ck['status'] == 'Selesai') ? 'selected' : '' ?>>✅ Selesai</option>
-                              <option value="Sedang Diantar" <?= (isset($ck['status']) && $ck['status'] == 'Sedang Diantar') ? 'selected' : '' ?>>🚚 Sedang Diantar</option>
-                              <option value="Diambil" <?= (isset($ck['status']) && $ck['status'] == 'Diambil') ? 'selected' : '' ?>>📦 Diambil</option>
-                           </select>
-                        </td>
-                     </tr>
-                  <?php $no_ck++; endforeach; else : ?>
-                     <tr>
-                        <td colspan="10" class="txt-center">Data Tidak Tersedia</td>
-                     </tr>
-                  <?php endif; ?>
-               </tbody>
-            </table>
-         </div>
-      </div>
-   </div>
-
-   <!-- Script JavaScript dipindah ke sini (DI LUAR loop) -->
-   <script>
-      function updateStatus(status, noOrder, tipe){
-         if(status != ''){
-            if(confirm('Update status order menjadi: ' + status + '?')){
-               window.location = '<?=url('admin/update_status_order.php')?>?tipe=' + tipe + '&no_order=' + noOrder + '&status=' + status;
-            }
-         }
-      }
-   </script>
+							<!-- Action Buttons -->
+							<td class="px-4 py-3">
+								<div class="flex flex-col space-y-2">
+									<div class="flex space-x-2">
+										<a href="<?=url('detail_order/detail_ck/detail_order_ck.php?or_ck_number=')?><?=$ck['or_ck_number']?>" class="inline-flex items-center space-x-1 px-3 py-1.5 bg-blue-500 text-white rounded-lg text-xs font-semibold hover:bg-blue-600 transition-colors">
+											<i class="fas fa-eye"></i>
+											<span>Detail</span>
+										</a>
+										<a href="<?=url('daftar_order/hapus_ck.php?or_ck_number=')?><?=$ck['or_ck_number']?>" onclick="return confirm('Yakin akan menghapus?');" class="inline-flex items-center space-x-1 px-3 py-1.5 bg-red-500 text-white rounded-lg text-xs font-semibold hover:bg-red-600 transition-colors">
+											<i class="fas fa-trash"></i>
+											<span>Hapus</span>
+										</a>
+									</div>
+									<!-- Status Dropdown -->
+									<select onchange="updateStatus(this.value, '<?=$ck['or_ck_number']?>', 'ck')" class="px-3 py-1.5 border-2 border-gray-300 rounded-lg text-xs focus:outline-none focus:border-primary-500 transition-all">
+										<option value="">-- Update Status --</option>
+										<option value="Pending" <?= (isset($ck['status']) && $ck['status'] == 'Pending') ? 'selected' : '' ?>><i class="fas fa-clock"></i> Pending</option>
+										<option value="Diproses" <?= (isset($ck['status']) && $ck['status'] == 'Diproses') ? 'selected' : '' ?>><i class="fas fa-spinner"></i> Diproses</option>
+										<option value="Selesai" <?= (isset($ck['status']) && $ck['status'] == 'Selesai') ? 'selected' : '' ?>><i class="fas fa-check"></i> Selesai</option>
+										<option value="Sedang Diantar" <?= (isset($ck['status']) && $ck['status'] == 'Sedang Diantar') ? 'selected' : '' ?>><i class="fas fa-truck"></i> Sedang Diantar</option>
+										<option value="Diambil" <?= (isset($ck['status']) && $ck['status'] == 'Diambil') ? 'selected' : '' ?>><i class="fas fa-box"></i> Diambil</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+					<?php $no_ck++; endforeach; else : ?>
+						<tr>
+							<td colspan="10" class="px-4 py-8 text-center text-gray-500">
+								<i class="fas fa-inbox text-4xl mb-3 text-gray-300"></i>
+								<p>Data Tidak Tersedia</p>
+							</td>
+						</tr>
+					<?php endif; ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
+
+<!-- Script JavaScript -->
+<script>
+	function updateStatus(status, noOrder, tipe){
+		if(status != ''){
+			if(confirm('Update status order menjadi: ' + status + '?')){
+				window.location = '<?=url('admin/update_status_order.php')?>?tipe=' + tipe + '&no_order=' + noOrder + '&status=' + status;
+			}
+		}
+	}
+</script>
