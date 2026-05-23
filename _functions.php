@@ -317,7 +317,7 @@ function order_dc($order_dc){
 		$orderNum_dc = 'DC-' . strtoupper($limitNum);
 	}
 
-	$query_dc = "INSERT INTO tb_order_dc (or_dc_number, nama_pel_dc, no_telp_dc, alamat_dc, jenis_paket_dc, waktu_kerja_dc, berat_qty_dc, tarif_dc, tgl_masuk_dc, tgl_keluar_dc, tot_bayar, keterangan_dc, status, metode_pengambilan) VALUES (
+	$query_dc = "INSERT INTO tb_order_dc (or_dc_number, nama_pel_dc, no_telp_dc, alamat_dc, jenis_paket_dc, wkt_krj_dc, berat_qty_dc, harga_perkilo, tgl_masuk_dc, tgl_keluar_dc, tot_bayar, keterangan_dc, status, metode_pengambilan) VALUES (
 		'$orderNum_dc','$nama_pel_dc','$no_telp','$alamat_dc','$jns_paket','$wkt_kerja_dc',
 		'$berat_dc','$trf_dc','$tgl_msk_dc','$tgl_kel_dc','$tot_bayar_dc','$ket_dc','Pending','$metode'
 	)";
