@@ -2,7 +2,7 @@
 	require_once('_functions.php');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="id" class="scroll-smooth">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,26 +15,18 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 	<!-- Custom Tailwind Config -->
 	<script>
 		tailwind.config = {
+			darkMode: 'class',
 			theme: {
 				extend: {
 					colors: {
 						primary: {
-							500: '#667eea',
-							600: '#5568d3',
-							700: '#4553b8',
-						},
-						secondary: {
-							500: '#764ba2',
+							500: '#3b82f6',
+							600: '#2563eb',
+							700: '#1d4ed8',
 						}
-					},
-					fontFamily: {
-						sans: ['Poppins', 'sans-serif'],
 					}
 				}
 			}
@@ -42,36 +34,12 @@
 	</script>
 
 	<style>
-		@keyframes float {
-			0%, 100% { transform: translateY(0) rotate(0deg); }
-			50% { transform: translateY(-20px) rotate(10deg); }
-		}
-
-		@keyframes fadeInUp {
-			from {
-				opacity: 0;
-				transform: translateY(20px);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		.animate-float {
-			animation: float 6s ease-in-out infinite;
-		}
-
-		.animate-fade-in-up {
-			animation: fadeInUp 0.8s ease;
+		* {
+			transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 		}
 	</style>
 </head>
-<body class="font-sans bg-gradient-to-br from-primary-500 to-secondary-500 min-h-screen flex items-center justify-center p-5 pb-20 relative overflow-hidden">
-
-	<!-- Animated Background Bubbles -->
-	<div class="absolute w-[300px] h-[300px] -top-[150px] -left-[150px] rounded-full bg-white/10 animate-float"></div>
-	<div class="absolute w-[400px] h-[400px] -bottom-[200px] -right-[200px] rounded-full bg-white/10 animate-float" style="animation-delay: 3s;"></div>
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen flex items-center justify-center p-4">
 
 	<?php if (isset($_SESSION['login']) && isset($_SESSION['master'])) : ?>
 		<script>window.location='<?=url()?>'</script>
@@ -80,7 +48,6 @@
 	<?php
 		$showError = false;
 		$errorMessage = '';
-		$errorIcon = '';
 
 		if (isset($_POST['login'])) {
 			$username = $_POST['username'];
@@ -110,86 +77,84 @@
 	?>
 
 	<!-- Main Container -->
-	<div class="relative z-10 w-full max-w-5xl">
-		<div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2 min-h-[600px]">
+	<!-- Clean Minimalist Login Container -->
+	<div class="w-full max-w-md">
+		<div class="bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-8">
 
-			<!-- Left Side - Form -->
-			<div class="p-12 flex flex-col justify-center bg-white">
-				<div class="text-center mb-10 animate-fade-in-up">
-					<h2 class="text-gray-800 text-3xl font-semibold mb-2">Selamat Datang Kembali!</h2>
-					<p class="text-gray-600 text-sm">Silakan login untuk melanjutkan</p>
-				</div>
-
-				<form action="" method="post" class="space-y-6">
-					<!-- Username Field -->
-					<div class="animate-fade-in-up">
-						<label for="username" class="block text-gray-700 font-medium text-sm mb-2">Username</label>
-						<div class="relative">
-							<input
-								type="text"
-								name="username"
-								id="username"
-								placeholder="Masukkan username"
-								required
-								autocomplete="off"
-								class="w-full px-5 py-3.5 pr-12 border-2 border-gray-200 rounded-xl text-base transition-all focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 bg-gray-50 focus:bg-white"
-							>
-							<span class="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl">
-								<i class="fas fa-user"></i>
-							</span>
-						</div>
-					</div>
-
-					<!-- Password Field -->
-					<div class="animate-fade-in-up" style="animation-delay: 0.1s;">
-						<label for="password" class="block text-gray-700 font-medium text-sm mb-2">Password</label>
-						<div class="relative">
-							<input
-								type="password"
-								name="password"
-								id="password"
-								placeholder="Masukkan password"
-								required
-								autocomplete="off"
-								class="w-full px-5 py-3.5 pr-12 border-2 border-gray-200 rounded-xl text-base transition-all focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 bg-gray-50 focus:bg-white"
-							>
-							<span
-								class="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl cursor-pointer hover:text-primary-500 transition-colors select-none"
-								onclick="togglePassword()"
-							>
-								<i class="fas fa-eye" id="toggle-icon"></i>
-							</span>
-						</div>
-					</div>
-
-					<!-- Login Button -->
-					<div class="animate-fade-in-up" style="animation-delay: 0.2s;">
-						<button
-							type="submit"
-							name="login"
-							class="w-full py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-xl text-base font-semibold shadow-lg shadow-primary-500/40 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-500/60 active:translate-y-0 transition-all"
-						>
-							Login Sekarang
-						</button>
-					</div>
-
-					<!-- Register Link -->
-					<div class="text-center text-sm animate-fade-in-up" style="animation-delay: 0.3s;">
-						<p class="text-gray-600">
-							Bukan admin?
-							<a href="login_pelanggan.php" class="text-primary-600 font-semibold hover:underline">
-								Login sebagai Pelanggan
-							</a>
-						</p>
-					</div>
-				</form>
+			<!-- Logo & Title -->
+			<div class="text-center mb-8">
+				<img src="<?= url('_assets/img/logo/nav-logo.png') ?>" alt="Logo" class="h-16 w-16 mx-auto mb-4">
+				<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h2>
+				<p class="text-sm text-slate-600 dark:text-slate-400">Login to continue</p>
 			</div>
 
-			<!-- Right Side - Illustration -->
-			<div class="hidden md:flex bg-gradient-to-br from-primary-500 to-secondary-500 p-10 flex-col items-center justify-center relative overflow-hidden">
-				<!-- Decorative Circles -->
-				<div class="absolute w-[150px] h-[150px] -top-[75px] -right-[75px] rounded-full bg-white/10"></div>
-				<div class="absolute w-[100px] h-[100px] bottom-12 -left-12 rounded-full bg-white/10"></div>
+			<!-- Login Form -->
+			<form action="" method="post" class="space-y-4">
+				<!-- Username -->
+				<div>
+					<label for="username" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Username</label>
+					<div class="relative">
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username"
+							required
+							autocomplete="off"
+							class="w-full px-4 py-3 pl-11 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 transition-all"
+						>
+						<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+							<i class="fas fa-user"></i>
+						</span>
+					</div>
+				</div>
+
+				<!-- Password -->
+				<div>
+					<label for="password" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Password</label>
+					<div class="relative">
+						<input
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Enter password"
+							required
+							autocomplete="off"
+							class="w-full px-4 py-3 pl-11 pr-11 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 transition-all"
+						>
+						<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+							<i class="fas fa-lock"></i>
+						</span>
+						<span
+							class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer hover:text-primary-500 transition-colors"
+							onclick="togglePassword()"
+						>
+							<i class="fas fa-eye" id="toggle-icon"></i>
+						</span>
+					</div>
+				</div>
+
+				<!-- Login Button -->
+				<button
+					type="submit"
+					name="login"
+					class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors"
+				>
+					Login
+				</button>
+
+				<!-- Customer Login Link -->
+				<div class="text-center text-sm">
+					<p class="text-slate-600 dark:text-slate-400">
+						Not admin?
+						<a href="login_pelanggan.php" class="text-primary-600 dark:text-primary-400 font-medium hover:underline">
+							Login as Customer
+						</a>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
 				<div class="absolute w-[60px] h-[60px] top-24 left-8 rounded-full bg-white/10 animate-pulse"></div>
 
 				<!-- Content -->
@@ -213,19 +178,12 @@
 		</div>
 	</div>
 
-	<!-- Copyright Footer -->
-	<div class="fixed bottom-0 left-0 w-full py-4 bg-black/20 backdrop-blur-md text-center z-10">
-		<p class="text-white text-sm m-0 tracking-wide">
-			&copy; <span id="tahun"></span> <span class="font-semibold">Mr. Clean Laundry</span> • All Rights Reserved
-		</p>
-	</div>
-
-	<!-- Error Modal (if needed) -->
+	<!-- Error Modal -->
 	<?php if ($showError): ?>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			if (typeof modalError === 'function') {
-				modalError('<?= $errorMessage ?>', 'Login Gagal');
+				modalError('<?= $errorMessage ?>', 'Login Failed');
 			} else {
 				alert('<?= $errorMessage ?>');
 			}
@@ -233,10 +191,10 @@
 	</script>
 	<?php endif; ?>
 
-	<script>
-		// Set current year
-		document.getElementById("tahun").innerHTML = new Date().getFullYear();
+	<!-- Modal Script -->
+	<script src="<?=url('_assets/js/modal.js')?>"></script>
 
+	<script>
 		// Toggle password visibility
 		function togglePassword() {
 			var passwordInput = document.getElementById("password");
@@ -250,14 +208,8 @@
 				toggleIcon.className = "fas fa-eye";
 			}
 		}
-
-		// Add animation on form submit
-		document.querySelector('form').addEventListener('submit', function(e) {
-			const btn = this.querySelector('button[type="submit"]');
-			btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
-			btn.style.opacity = '0.7';
-		});
 	</script>
 
 </body>
+</html>
 </html>
