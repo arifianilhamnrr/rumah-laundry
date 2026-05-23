@@ -1,314 +1,176 @@
-<?php 
-	require_once('_functions.php');
+<?php
+require_once('_functions.php');
 
-	// Jika sudah login, redirect
-	if(isset($_SESSION['login_pelanggan'])){
-		header("Location: pelanggan/dashboard.php");
-		exit;
-	}
+// Jika sudah login, redirect
+if (isset($_SESSION['login_pelanggan'])) {
+	header("Location: pelanggan/dashboard.php");
+	exit;
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login Pelanggan | Rumah Laundry</title>
-	<link rel="stylesheet" href="<?=url('_assets/css/login.css')?>">
+	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="shortcut icon" href="<?= url('_assets/img/logo/nav-logo.png') ?>" type="image/x-icon">
-	<style>
-		:root {
-			color-scheme: light;
-		}
-		* {
-			box-sizing: border-box;
-		}
-		body {
-			min-height: 100vh;
-			margin: 0;
-			background:
-				radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 30%),
-				linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-			font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-			color: #0f172a;
-		}
-		body::before {
-			content: "";
-			position: fixed;
-			inset: 0;
-			background: linear-gradient(135deg, rgba(255,255,255,0.35), transparent 55%);
-			pointer-events: none;
-		}
-		.input-form {
-			position: relative;
-		}
-		.input-form input {
-			width: 100%;
-			border: 1px solid #cbd5e1;
-			background: rgba(255,255,255,0.92);
-			border-radius: 18px;
-			padding: 14px 48px 14px 16px;
-			font-size: 14px;
-			outline: none;
-			transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
-			box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-		}
-		.input-form input:focus {
-			border-color: #64748b;
-			box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.18);
-			background: #fff;
-		}
-		.toggle-password {
-			position: absolute;
-			right: 15px;
-			top: 50%;
-			transform: translateY(-50%);
-			cursor: pointer;
-			user-select: none;
-			color: #64748b;
-			font-size: 18px;
-		}
-		.toggle-password:hover {
-			color: #0f172a;
-		}
-		.box {
-			position: relative;
-			z-index: 1;
-			padding: 32px 16px 16px;
-		}
-		.box-content {
-			max-width: 1180px;
-			margin: 0 auto;
-			border: 1px solid rgba(226, 232, 240, 0.9);
-			border-radius: 32px;
-			background: rgba(255,255,255,0.74);
-			backdrop-filter: blur(18px);
-			box-shadow: 0 10px 30px -18px rgba(15, 23, 42, 0.28), 0 2px 6px rgba(15, 23, 42, 0.06);
-			overflow: hidden;
-		}
-		.box__left {
-			padding: 36px 32px !important;
-			background: rgba(255,255,255,0.72);
-		}
-		.box__right {
-			background: linear-gradient(180deg, rgba(248,250,252,0.35), rgba(226,232,240,0.2));
-		}
-		.logo img {
-			height: 54px;
-			width: 54px;
-			padding: 10px;
-			border-radius: 18px;
-			background: rgba(255,255,255,0.9);
-			border: 1px solid #e2e8f0;
-			box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
-		}
-		.box__left-title h4 {
-			font-size: 30px;
-			line-height: 1.1;
-			margin-bottom: 8px;
-			color: #0f172a;
-		}
-		.btn-login {
-			width: 100%;
-			border: 0;
-			border-radius: 18px;
-			padding: 14px 18px;
-			background: #0f172a;
-			color: #fff;
-			font-weight: 600;
-			font-size: 14px;
-			box-shadow: 0 10px 20px -14px rgba(15, 23, 42, 0.8);
-			transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
-		}
-		.btn-login:hover {
-			transform: translateY(-1px);
-			background: #1e293b;
-			box-shadow: 0 14px 24px -16px rgba(15, 23, 42, 0.9);
-		}
-		.link-register {
-			text-align: center;
-			margin-top: 18px;
-			font-size: 14px;
-			color: #64748b;
-		}
-		.link-register p {
-			margin: 8px 0;
-		}
-		.link-register a {
-			color: #0f172a;
-			text-decoration: none;
-			font-weight: 600;
-		}
-		.link-register a:hover {
-			text-decoration: underline;
-		}
-		.copyright {
-			position: relative;
-			z-index: 1;
-			text-align: center;
-			padding: 0 16px 24px;
-			color: #64748b;
-			font-size: 14px;
-		}
-		.overlay .boxSalah {
-			border-radius: 24px;
-			border: 1px solid #fecaca;
-			background: rgba(255,255,255,0.96);
-			box-shadow: 0 12px 30px -18px rgba(127, 29, 29, 0.4);
-		}
-		@media (max-width: 768px) {
-			.box {
-				padding-top: 16px;
-			}
-			.box-content {
-				border-radius: 24px;
-			}
-			.box__left {
-				padding: 28px 20px !important;
-			}
-		}
-	</style>
 </head>
-<body>
 
-	<?php 
-		if(isset($_POST['login'])){
-			$username = $_POST['username'];
-			$password = $_POST['password'];
+<body class="bg-slate-50 min-h-screen flex flex-col items-center justify-center font-sans antialiased relative">
 
-			$pelanggan = login_pelanggan($username, $password);
+	<?php
+	if (isset($_POST['login'])) {
+		$username = $_POST['username'];
+		$password = $_POST['password'];
 
-			if($pelanggan){
-				$_SESSION['login_pelanggan'] = true;
-				$_SESSION['id_pelanggan'] = $pelanggan['id_pelanggan'];
-				$_SESSION['nama_pelanggan'] = $pelanggan['nama_lengkap'];
-				$_SESSION['username_pelanggan'] = $pelanggan['username'];
-				
-				echo "<script>
-					alert('Login berhasil!');
-					window.location='pelanggan/dashboard.php';
-				</script>";
-			} else {
-				echo "
-					<div class='overlay'>
-						<div class='boxSalah'>
-							<a href='login_pelanggan.php' class='close'>&times;</a>
-							<p>Username atau Password salah!</p>
-						</div>
-					</div>
-				";
-			}
+		$pelanggan = login_pelanggan($username, $password);
+
+		if ($pelanggan) {
+			$_SESSION['login_pelanggan'] = true;
+			$_SESSION['id_pelanggan'] = $pelanggan['id_pelanggan'];
+			$_SESSION['nama_pelanggan'] = $pelanggan['nama_lengkap'];
+			$_SESSION['username_pelanggan'] = $pelanggan['username'];
+
+			echo "<script>
+                    alert('Login berhasil!');
+                    window.location='pelanggan/dashboard.php';
+                </script>";
+		} else {
+			// Notifikasi Error dengan Tailwind
+			echo "
+                    <div class='fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50' id='error-overlay'>
+                        <div class='bg-white p-6 rounded-2xl shadow-2xl relative max-w-sm w-full mx-4 text-center transform transition-all'>
+                            <button onclick='document.getElementById(\"error-overlay\").remove()' class='absolute top-3 right-4 text-2xl text-gray-400 hover:text-gray-700'>&times;</button>
+                            <div class='w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4'>
+                                <svg class='w-8 h-8 text-red-500' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'></path></svg>
+                            </div>
+                            <p class='text-gray-800 font-semibold text-lg'>Gagal Masuk!</p>
+                            <p class='text-gray-500 text-sm mt-1'>Username atau Password salah.</p>
+                        </div>
+                    </div>
+                ";
 		}
+	}
 	?>
 
-	<div class="box">
-		<div class="box-content">
-			<div class="col box__left">
-				<div class="logo">
-					<img src="<?= url('_assets/img/logo/nav-logo.png') ?>" alt="Logo MR Clean Laundry">
-				</div>
-				<div class="box__left-title">
-					<p style="font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #64748b; margin-bottom: 10px;">Portal Pelanggan</p>
-					<h4>Login Pelanggan</h4>
-					<p style="font-size: 14px; color: #64748b; line-height: 1.6;">Masuk untuk memesan layanan laundry dengan pengalaman baru yang lebih bersih, cepat, nyaman.</p>
-				</div>
+	<div
+		class="flex w-full max-w-5xl bg-white rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] overflow-hidden mx-4 h-[600px] z-10 relative">
 
-				<div style="margin: 20px 0 24px; padding: 16px 18px; border: 1px solid #e2e8f0; border-radius: 22px; background: rgba(248,250,252,0.9); box-shadow: 0 1px 2px rgba(15,23,42,.04);">
-					<div style="display: flex; gap: 12px; align-items: flex-start;">
-						<div style="height: 38px; width: 38px; min-width: 38px; border-radius: 14px; background: #0f172a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px;">✦</div>
-						<div>
-							<p style="margin: 0 0 4px; font-size: 14px; font-weight: 600; color: #0f172a;">Akses order lebih praktis</p>
-							<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #64748b;">Pantau status laundry, buat order baru, cek riwayat, kelola profil.</p>
-						</div>
-					</div>
+		<div class="w-full lg:w-5/12 p-8 sm:p-12 flex flex-col justify-center bg-white relative z-20">
+			<div class="mb-10 text-center">
+				<img src="<?= url('_assets/img/logo/nav-logo.png') ?>" alt="Logo Rumah Laundry"
+					class="h-20 w-auto mx-auto mb-6 object-contain">
+				<h4 class="text-2xl font-bold text-gray-800 tracking-tight">Login Pelanggan</h4>
+				<p class="text-sm text-gray-500 mt-1">Masuk untuk memesan layanan laundry</p>
+			</div>
+
+			<form action="" method="post" class="w-full max-w-sm mx-auto space-y-6">
+				<div class="relative">
+					<input type="text" name="username" placeholder="Username" required autocomplete="off"
+						class="w-full border-b-2 border-gray-200 py-2 text-gray-700 focus:outline-none focus:border-blue-500 transition-colors bg-transparent placeholder-gray-400">
 				</div>
 
-				<div class="box__left-form">
-					<form action="" method="post">
-						<div class="box__left-form-group">
-							<div class="input-form">
-								<input type="text" name="username" placeholder="Username" required autocomplete="off">
-							</div>
-						</div>
+				<div class="relative">
+					<input type="password" name="password" id="password" placeholder="Password" required
+						autocomplete="off"
+						class="w-full border-b-2 border-gray-200 py-2 text-gray-700 focus:outline-none focus:border-blue-500 transition-colors bg-transparent placeholder-gray-400 pr-10">
 
-						<div class="box__left-form-group">
-							<div class="input-form">
-								<input type="password" name="password" id="password" placeholder="Password" required autocomplete="off">
-								<span class="toggle-password" onclick="togglePassword()">👁️</span>
-							</div>
-						</div>
+					<button type="button" onclick="togglePassword()"
+						class="absolute right-0 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none p-1">
+						<svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+							<path stroke-linecap="round" stroke-linejoin="round"
+								d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+						</svg>
+						<svg id="eye-slash-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden">
+							<path stroke-linecap="round" stroke-linejoin="round"
+								d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+						</svg>
+					</button>
+				</div>
 
-						<div class="box__left-form-group">
-							<button type="submit" name="login" class="btn-login mt-1">Login</button>
-						</div>
+				<div class="pt-4">
+					<button type="submit" name="login"
+						class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-0.5">
+						LOGIN
+					</button>
+				</div>
 
-						<div class="link-register">
-							<p>Belum punya akun? <a href="register_pelanggan.php">Daftar di sini</a></p>
-							<p><a href="login.php">Login sebagai Admin</a></p>
-						</div>
-					</form>
+				<div class="text-center mt-6 space-y-2 text-sm text-gray-600">
+					<p>Belum punya akun? <a href="register_pelanggan.php"
+							class="text-blue-500 font-semibold hover:text-blue-600 transition-colors">Daftar di sini</a>
+					</p>
+					<p><a href="login.php"
+							class="text-blue-500 font-semibold hover:text-blue-600 transition-colors">Login sebagai
+							Admin</a></p>
+				</div>
+			</form>
+		</div>
+
+		<div
+			class="hidden lg:flex w-7/12 bg-gradient-to-br from-[#00c6ff] to-[#0072ff] relative p-12 flex-col items-end overflow-hidden">
+			<div class="text-right text-white z-20 w-full mb-8">
+				<h1 class="text-4xl font-extrabold tracking-wide drop-shadow-md">Mr. Clean Laundry</h1>
+				<p class="text-lg mt-2 font-medium text-white/90 drop-shadow-sm">Layanan laundry tercepat & termurah</p>
+			</div>
+
+			<img src="<?= url('_assets/img/orang.png') ?>" alt="Mr. Clean"
+				class="absolute bottom-0 left-4 h-[85%] object-contain z-20 drop-shadow-2xl">
+
+			<div class="absolute right-16 top-1/3 flex flex-col gap-8 z-20">
+				<div
+					class="bg-white/20 p-4 rounded-2xl backdrop-blur-md border border-white/30 shadow-xl animate-[bounce_3s_infinite]">
+					<img src="<?= url('_assets/img/kaos.png') ?>" alt="Kaos" class="w-16 h-16 object-contain">
+				</div>
+				<div
+					class="bg-white/20 p-4 rounded-2xl backdrop-blur-md border border-white/30 shadow-xl animate-[bounce_4s_infinite_1s] -ml-10">
+					<img src="<?= url('_assets/img/celana.png') ?>" alt="Celana" class="w-16 h-16 object-contain">
+				</div>
+				<div
+					class="bg-white/20 p-4 rounded-2xl backdrop-blur-md border border-white/30 shadow-xl animate-[bounce_3.5s_infinite_0.5s]">
+					<img src="<?= url('_assets/img/kemeja.png') ?>" alt="Kemeja" class="w-16 h-16 object-contain">
 				</div>
 			</div>
 
-			<div class="col box__right">
-				<div class="box__right-content">
-					<div class="text__right">
-						<h1>Mr. Clean Laundry</h1>
-						<p style="font-size: 18px; margin-top: 10px;">Layanan laundry tercepat & termurah</p>
-					</div>
+			<div class="absolute top-20 left-20 w-12 h-12 bg-white/20 rounded-full blur-[2px]"></div>
+			<div class="absolute bottom-32 left-1/2 w-8 h-8 bg-white/30 rounded-full"></div>
+			<div class="absolute top-1/2 right-1/4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
 
-					<img src=" <?=url('_assets/img/orang.png')?>" alt="" class="box-img-orang">
-					<img src=" <?=url('_assets/img/celana.png')?>" alt="" class="box-img-celana">
-					<img src=" <?=url('_assets/img/kaos.png')?>" alt="" class="box-img-kaos">
-					<img src=" <?=url('_assets/img/kemeja.png')?>" alt="" class="box-img-kemeja">
-
-					<div class="bubble-1"></div>
-					<div class="bubble-2"></div>
-					<div class="bubble-3"></div>
-					<div class="bubble-4"></div>
-					<div class="bubble-5"></div>
-					<div class="bubble-6"></div>
-
-					<div class="garis garis-sm garis-1"></div>
-					<div class="garis garis-md garis-2"></div>
-					<div class="garis garis-sm garis-3"></div>
-					<div class="garis garis-md garis-4"></div>
-					<div class="garis garis-md garis-5"></div>
-					<div class="garis garis-lg garis-6"></div>
-					<div class="garis garis-lg garis-7"></div>
-					<div class="garis garis-xl garis-8"></div>
-					<div class="garis garis-sm garis-9"></div>
-					<div class="garis garis-md garis-10"></div>
-					<div class="garis garis-sm garis-11"></div>
-					<div class="garis garis-md garis-12"></div>
-				</div>
-			</div>
+			<div class="absolute top-1/4 left-1/3 w-16 h-1 rounded-full bg-white/40 rotate-45"></div>
+			<div class="absolute bottom-1/4 right-1/3 w-20 h-1.5 rounded-full bg-white/30 -rotate-12"></div>
+			<div class="absolute top-1/2 left-1/4 w-10 h-1 rounded-full bg-white/50 rotate-[30deg]"></div>
+			<div class="absolute top-24 right-32 w-14 h-1 rounded-full bg-white/40 -rotate-[20deg]"></div>
 		</div>
 	</div>
 
-	<div class="copyright">
-		<p>&copy; <span id="tahun"></span> All Rights Reserved.</p>
-		<script>
-		var now = new Date();
-		var tahun = now.getFullYear();
-		document.getElementById("tahun").innerHTML = tahun;
-		</script>
-	</div>
-
 	<script>
+		document.getElementById("tahun").innerHTML = new Date().getFullYear();
+
+		// Fungsi toggle show/hide password dengan SVG
 		function togglePassword() {
 			var passwordInput = document.getElementById("password");
-			var toggleIcon = document.querySelector(".toggle-password");
-			
+			var eyeIcon = document.getElementById("eye-icon");
+			var eyeSlashIcon = document.getElementById("eye-slash-icon");
+
 			if (passwordInput.type === "password") {
 				passwordInput.type = "text";
-				toggleIcon.innerHTML = "🔒";
+				// Sembunyikan mata terbuka, tampilkan mata dicoret
+				eyeIcon.classList.add("hidden");
+				eyeSlashIcon.classList.remove("hidden");
 			} else {
 				passwordInput.type = "password";
-				toggleIcon.innerHTML = "👁️";
+				// Sembunyikan mata dicoret, tampilkan mata terbuka
+				eyeIcon.classList.remove("hidden");
+				eyeSlashIcon.classList.add("hidden");
 			}
 		}
 	</script>
 
 </body>
+
 </html>
