@@ -1,7 +1,7 @@
 <?php require_once('header_pelanggan.php'); ?>
 
 <!-- Clean Customer Dashboard -->
-<main class="container mx-auto px-4 lg:px-8 py-6">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 	<!-- Welcome Section -->
 	<div class="mb-6">
 		<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Dashboard</h1>
