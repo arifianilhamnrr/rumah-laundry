@@ -1,5 +1,5 @@
-<?php 
-require_once('header_pelanggan.php'); 
+<?php
+require_once('header_pelanggan.php');
 
 // Ambil nomor order dari URL
 $no_ck = $_GET['or_ck_number'];
@@ -15,118 +15,114 @@ if($data['nama_pel_ck'] != $nama_pelanggan){
 }
 ?>
 
-<div id="detail_or_ck" class="main-content">
-	<div class="container">
-		<div class="baris">
-			<div class="col mt-2">
-				<div class="card-md">
-					<div class="card-title card-flex">
-						<div class="card-col">
-							<h2>📦 Detail Order</h2>	
-						</div>
+<!-- Clean Order Detail Page -->
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+	<!-- Page Header -->
+	<div class="flex justify-between items-center mb-6">
+		<div>
+			<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Detail Order</h1>
+			<p class="text-sm text-slate-600 dark:text-slate-400">No. Order: <?= $data['or_ck_number']?></p>
+		</div>
+		<a href="riwayat_order.php" class="inline-flex items-center space-x-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+			<i class="fas fa-arrow-left"></i>
+			<span>Kembali</span>
+		</a>
+	</div>
 
-						<div class="card-col txt-right">
-							<h3 class="no-order"><small>No Order : </small><?= $data['or_ck_number']?></h3>	
-						</div>
+	<!-- Detail Card -->
+	<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+		<!-- Customer Info Section -->
+		<div class="p-6 border-b border-slate-200 dark:border-slate-700">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Informasi Customer</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Nama</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= $data['nama_pel_ck'] ?></p>
+				</div>
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Nomor Telepon</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= $data['no_telp_ck'] ?></p>
+				</div>
+				<div class="md:col-span-2">
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Alamat</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= $data['alamat_ck'] ?></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Order Info Section -->
+		<div class="p-6 border-b border-slate-200 dark:border-slate-700">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Informasi Order</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Tanggal Masuk</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= date('d/m/Y', strtotime($data['tgl_masuk_ck'])) ?></p>
+				</div>
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Tanggal Keluar</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= date('d/m/Y', strtotime($data['tgl_keluar_ck'])) ?></p>
+				</div>
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Durasi Kerja</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= $data['wkt_krj_ck'] ?></p>
+				</div>
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Jenis Paket</p>
+					<p class="text-sm font-medium text-slate-900 dark:text-white"><?= $data['jenis_paket_ck'] ?></p>
+				</div>
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Metode Pengambilan</p>
+					<p class="text-sm font-medium <?= ($data['metode_pengambilan'] == 'Antar Jemput') ? 'text-orange-600 dark:text-orange-400' : 'text-slate-900 dark:text-white' ?>">
+						<?= $data['metode_pengambilan'] ?? 'Ambil di Tempat' ?>
+					</p>
+				</div>
+				<div>
+					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Status</p>
+					<?php
+					$status = $data['status'] ?? 'Pending';
+					$statusClass = 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300';
+					if($status == 'Pending') {
+						$statusClass = 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400';
+					} elseif($status == 'Proses') {
+						$statusClass = 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400';
+					} elseif($status == 'Selesai') {
+						$statusClass = 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400';
+					}
+					?>
+					<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium <?= $statusClass ?>">
+						<?= $status ?>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Payment Info Section -->
+		<div class="p-6 border-b border-slate-200 dark:border-slate-700">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Rincian Pembayaran</h2>
+			<div class="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
+				<div class="grid grid-cols-3 gap-4 text-center">
+					<div>
+						<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Berat</p>
+						<p class="text-lg font-bold text-slate-900 dark:text-white"><?= $data['berat_qty_ck'] ?> Kg</p>
 					</div>
-
-					<div class="card-body">
-						<div class="jdl-or">
-							<h4>Customer</h4>
-						</div>
-						<table class="tb-detail_customer">   
-							<tr>
-								<th>Nama</th>
-								<td><?= $data['nama_pel_ck'] ?></td>
-							</tr>
-
-							<tr>
-								<th>Nomor Telepon</th>
-								<td><?= $data['no_telp_ck'] ?></td>
-							</tr>
-
-							<tr>
-								<th>Alamat</th>
-								<td><?= $data['alamat_ck'] ?></td>
-							</tr>
-
-							<tr>
-								<th>Order Masuk</th>
-								<td><?= date('d/m/Y', strtotime($data['tgl_masuk_ck'])) ?></td>
-							</tr>
-
-							<tr>
-								<th>Diambil Pada</th>
-								<td><?= date('d/m/Y', strtotime($data['tgl_keluar_ck'])) ?></td>
-							</tr>
-							
-							<tr>
-								<th>Durasi Kerja</th>
-								<td><?= $data['wkt_krj_ck'] ?></td>
-							</tr>
-
-							<tr>
-								<th>Jenis Paket</th>
-								<td><?= $data['jenis_paket_ck'] ?></td>
-							</tr>
-
-							<tr>
-								<th>Metode Pengambilan</th>
-								<td>
-									<input type="text" disabled value="<?= $data['metode_pengambilan'] ?? 'Ambil di Tempat' ?>" 
-									style="<?= ($data['metode_pengambilan'] == 'Antar Jemput') ? 'color: #e17055; font-weight: 600;' : '' ?>">
-								</td>
-							</tr>
-
-							<tr>
-								<th>Status</th>
-								<td>
-									<?php 
-									$status = $data['status'] ?? 'Pending';
-									$status_class = 'status-' . strtolower($status);
-									?>
-									<span class="status-badge <?= $status_class ?>">
-										<?= $status ?>
-									</span>
-								</td>
-							</tr>
-						</table>
-
-						<div class="mt-1"></div>
-						
-						<div class="jdl-or">
-							<h4>Order</h4>
-						</div>
-						
-						<table class="tb-detail_order">   
-							<tr>
-								<th>Berat (Kg)</th>
-								<th>Harga Per-Kg</th>
-								<th>Total Bayar</th>
-							</tr>
-
-							<tr>
-								<td><?= $data['berat_qty_ck'] . ' Kg'?></td>
-								<td>Rp <?= number_format($data['harga_perkilo'], 0, ',', '.') ?></td>
-								<td><strong>Rp <?= number_format($data['tot_bayar'], 0, ',', '.') ?></strong></td>
-							</tr>
-						</table>
-
-						<div class="details">
-							<h4 class="mb-01">Keterangan:</h4>
-							<p class="lead"><?= $data['keterangan_ck'] ?></p>
-						</div>
-
-						<div class="form-footer_detail">
-							<div class="buttons">
-								<a href="riwayat_order.php" class="btn-sm bg-primary">Kembali ke Riwayat</a>
-							</div>
-						</div>
+					<div>
+						<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Harga/Kg</p>
+						<p class="text-lg font-bold text-slate-900 dark:text-white">Rp <?= number_format($data['harga_perkilo'], 0, ',', '.') ?></p>
+					</div>
+					<div>
+						<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Total Bayar</p>
+						<p class="text-lg font-bold text-blue-600 dark:text-blue-400">Rp <?= number_format($data['tot_bayar'], 0, ',', '.') ?></p>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- Notes Section -->
+		<div class="p-6">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Keterangan</h2>
+			<p class="text-sm text-slate-600 dark:text-slate-400"><?= $data['keterangan_ck'] ?></p>
+		</div>
 	</div>
-</div>
+</main>
 
 <?php require_once('footer_pelanggan.php') ?>
