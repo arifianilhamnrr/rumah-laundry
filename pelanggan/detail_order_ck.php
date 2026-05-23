@@ -16,7 +16,7 @@ if($data['nama_pel_ck'] != $nama_pelanggan){
 ?>
 
 <!-- Clean Order Detail Page -->
-<main class="container mx-auto px-4 lg:px-8 py-6">
+<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 	<!-- Page Header -->
 	<div class="flex justify-between items-center mb-6">
 		<div>
@@ -123,6 +123,6 @@ if($data['nama_pel_ck'] != $nama_pelanggan){
 			<p class="text-sm text-slate-600 dark:text-slate-400"><?= $data['keterangan_ck'] ?></p>
 		</div>
 	</div>
-</main>
+</section>
 
 <?php require_once('footer_pelanggan.php') ?>

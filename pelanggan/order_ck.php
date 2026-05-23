@@ -16,7 +16,7 @@ if(isset($_POST['order_ck'])){
 ?>
 
 <!-- Clean Order Form Page -->
-<main class="container mx-auto px-4 lg:px-8 py-6">
+<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 	<!-- Page Header -->
 	<div class="flex justify-between items-center mb-6">
 		<div>
@@ -127,6 +127,6 @@ if(isset($_POST['order_ck'])){
 			</button>
 		</div>
 	</form>
-</main>
+</section>
 
 <?php require_once('footer_pelanggan.php'); ?>

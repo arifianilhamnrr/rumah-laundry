@@ -64,7 +64,7 @@
 		}
 	</style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900">
+<body class="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
 
 	<!-- Modal Component Script -->
 	<script src="<?=url('_assets/js/modal.js')?>"></script>
@@ -72,8 +72,9 @@
 	<!-- Theme Manager Script -->
 	<script src="<?=url('_assets/js/theme.js')?>"></script>
 
+	<div class="min-h-screen flex flex-col">
 	<!-- Clean Customer Header -->
-	<header class="sticky top-0 z-50 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm">
+	<header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-800/95 backdrop-blur border-b border-slate-200 dark:border-slate-700 shadow-sm">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16">
 				<!-- Logo -->
@@ -118,22 +119,28 @@
 		</div>
 
 		<!-- Clean Navigation Menu -->
-		<div class="border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+		<div class="border-t border-slate-200 dark:border-slate-700 bg-slate-50/90 dark:bg-slate-800/60">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<nav class="flex space-x-1 overflow-x-auto py-2">
-					<a href="<?=url('pelanggan/dashboard.php')?>" class="flex items-center space-x-2 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap">
+				<nav class="flex gap-2 overflow-x-auto py-3">
+					<a href="<?=url('pelanggan/dashboard.php')?>" class="inline-flex items-center space-x-2 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-xl transition-colors whitespace-nowrap border border-transparent hover:border-slate-200 dark:hover:border-slate-600">
 						<i class="fas fa-home"></i>
 						<span>Dashboard</span>
 					</a>
-					<a href="<?=url('pelanggan/order_baru.php')?>" class="flex items-center space-x-2 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap">
+					<a href="<?=url('pelanggan/order_baru.php')?>" class="inline-flex items-center space-x-2 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-xl transition-colors whitespace-nowrap border border-transparent hover:border-slate-200 dark:hover:border-slate-600">
 						<i class="fas fa-plus-circle"></i>
 						<span>Order Baru</span>
 					</a>
-					<a href="<?=url('pelanggan/riwayat_order.php')?>" class="flex items-center space-x-2 px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap">
+					<a href="<?=url('pelanggan/riwayat_order.php')?>" class="inline-flex items-center space-x-2 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-xl transition-colors whitespace-nowrap border border-transparent hover:border-slate-200 dark:hover:border-slate-600">
 						<i class="fas fa-history"></i>
 						<span>Riwayat Order</span>
+					</a>
+					<a href="<?=url('pelanggan/profil.php')?>" class="inline-flex items-center space-x-2 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 rounded-xl transition-colors whitespace-nowrap border border-transparent hover:border-slate-200 dark:hover:border-slate-600">
+						<i class="fas fa-user"></i>
+						<span>Profil</span>
 					</a>
 				</nav>
 			</div>
 		</div>
 	</header>
+
+	<main class="flex-1 w-full">

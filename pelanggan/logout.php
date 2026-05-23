@@ -1,16 +1,16 @@
-<?php 
+<?php
 require_once('../_functions.php');
 
-// Hapus session pelanggan
-unset($_SESSION['login_pelanggan']);
-unset($_SESSION['id_pelanggan']);
-unset($_SESSION['nama_pelanggan']);
-unset($_SESSION['username_pelanggan']);
+$_SESSION = [];
 
+if (ini_get('session.use_cookies')) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+}
+
+session_unset();
 session_destroy();
 
-echo "<script>
-	alert('Anda telah logout!');
-	window.location='../login_pelanggan.php';
-</script>";
+header('Location: ../login_pelanggan.php');
+exit;
 ?>
