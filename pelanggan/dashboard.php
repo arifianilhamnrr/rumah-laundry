@@ -1,63 +1,57 @@
 <?php require_once('header_pelanggan.php'); ?>
 
-<!-- Main Content with Tailwind -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-	<!-- Welcome Card -->
-	<div class="mb-8">
-		<div class="bg-gradient-to-r from-primary-600 to-secondary-500 rounded-2xl shadow-xl p-6 sm:p-8 text-white">
-			<div class="flex items-center space-x-3">
-				<i class="fas fa-hand-wave text-4xl animate-bounce"></i>
+<!-- Clean Customer Dashboard -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+	<!-- Welcome Section -->
+	<div class="mb-6">
+		<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Dashboard</h1>
+		<p class="text-sm text-slate-600 dark:text-slate-400">Selamat datang, <?= htmlspecialchars($nama_pelanggan) ?></p>
+	</div>
+
+	<!-- Stats Cards -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+		<!-- Card 1: Total Order -->
+		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
+			<div class="flex items-center justify-between">
 				<div>
-					<h2 class="text-3xl font-bold mb-2">Selamat Datang, <?= htmlspecialchars($nama_pelanggan) ?>!</h2>
-					<p class="text-primary-100">Kelola pesanan laundry Anda dengan mudah dan cepat</p>
+					<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Total Order</p>
+					<p class="text-2xl font-bold text-slate-900 dark:text-white"><?= count(get_order_pelanggan($nama_pelanggan)) ?></p>
+				</div>
+				<div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+					<i class="fas fa-shopping-bag text-blue-600 dark:text-blue-400 text-xl"></i>
+				</div>
+			</div>
+		</div>
+
+		<!-- Card 2: Paket -->
+		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
+			<div class="flex items-center justify-between">
+				<div>
+					<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Paket</p>
+					<p class="text-2xl font-bold text-slate-900 dark:text-white"><?= jmlPaket(); ?></p>
+				</div>
+				<div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+					<i class="fas fa-box-open text-purple-600 dark:text-purple-400 text-xl"></i>
+				</div>
+			</div>
+		</div>
+
+		<!-- Card 3: Status -->
+		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
+			<div class="flex items-center justify-between">
+				<div>
+					<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Status</p>
+					<p class="text-lg font-bold text-green-600 dark:text-green-400 flex items-center">
+						<i class="fas fa-check-circle mr-2"></i>
+						Aktif
+					</p>
+				</div>
+				<div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+					<i class="fas fa-user-check text-green-600 dark:text-green-400 text-xl"></i>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- Info Cards -->
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-		<!-- Card 1: Total Order -->
-		<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 overflow-hidden">
-			<div class="p-6">
-				<div class="flex items-center justify-between">
-					<div class="flex-1">
-						<p class="text-gray-500 text-sm font-medium mb-1">Total Order Saya</p>
-						<h3 class="text-3xl font-bold text-gray-900"><?= count(get_order_pelanggan($nama_pelanggan)) ?></h3>
-					</div>
-					<div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-full p-4">
-						<i class="fas fa-shopping-bag text-white text-2xl"></i>
-					</div>
-				</div>
-			</div>
-			<div class="bg-gradient-to-r from-blue-500 to-blue-600 h-1"></div>
-		</div>
-
-		<!-- Card 2: Paket Tersedia -->
-		<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 overflow-hidden">
-			<div class="p-6">
-				<div class="flex items-center justify-between">
-					<div class="flex-1">
-						<p class="text-gray-500 text-sm font-medium mb-1">Paket Tersedia</p>
-						<h3 class="text-3xl font-bold text-gray-900"><?= jmlPaket(); ?></h3>
-					</div>
-					<div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-full p-4">
-						<i class="fas fa-box-open text-white text-2xl"></i>
-					</div>
-				</div>
-			</div>
-			<div class="bg-gradient-to-r from-purple-500 to-purple-600 h-1"></div>
-		</div>
-
-		<!-- Card 3: Status Akun -->
-		<div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 overflow-hidden">
-			<div class="p-6">
-				<div class="flex items-center justify-between">
-					<div class="flex-1">
-						<p class="text-gray-500 text-sm font-medium mb-1">Status Akun</p>
-						<h3 class="text-lg font-bold text-green-600 flex items-center">
-							<i class="fas fa-check-circle mr-2"></i>
-							Aktif
 						</h3>
 					</div>
 					<div class="bg-gradient-to-br from-green-500 to-green-600 rounded-full p-4">
