@@ -9,9 +9,9 @@
 	</div>
 
 	<!-- Stats Cards -->
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 mb-8">
 		<!-- Card 1: Total Order -->
-		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
+		<div class="rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
 			<div class="flex items-center justify-between">
 				<div>
 					<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Total Order</p>
@@ -24,7 +24,7 @@
 		</div>
 
 		<!-- Card 2: Paket -->
-		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
+		<div class="rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
 			<div class="flex items-center justify-between">
 				<div>
 					<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Paket</p>
@@ -37,7 +37,7 @@
 		</div>
 
 		<!-- Card 3: Status -->
-		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition-shadow">
+		<div class="rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
 			<div class="flex items-center justify-between">
 				<div>
 					<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">Status</p>
@@ -54,11 +54,14 @@
 	</div>
 
 	<!-- Quick Actions -->
-	<div class="mb-6">
-		<h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Menu Cepat</h2>
-		<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+	<div class="mb-8">
+		<div class="mb-4 flex items-center justify-between">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Menu Cepat</h2>
+			<p class="text-sm text-slate-500 dark:text-slate-400">Akses fitur utama lebih cepat.</p>
+		</div>
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
 			<!-- Order Baru -->
-			<a href="order_baru.php" class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-md transition-all group">
+			<a href="order_baru.php" class="group rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
 				<div class="flex flex-col items-center text-center">
 					<div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
 						<i class="fas fa-tshirt text-blue-600 dark:text-blue-400 text-2xl"></i>
@@ -69,7 +72,7 @@
 			</a>
 
 			<!-- Riwayat Order -->
-			<a href="riwayat_order.php" class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-md transition-all group">
+			<a href="riwayat_order.php" class="group rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
 				<div class="flex flex-col items-center text-center">
 					<div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
 						<i class="fas fa-history text-purple-600 dark:text-purple-400 text-2xl"></i>
@@ -80,7 +83,7 @@
 			</a>
 
 			<!-- Profil -->
-			<a href="profil.php" class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6 hover:shadow-md transition-all group">
+			<a href="profil.php" class="group rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card">
 				<div class="flex flex-col items-center text-center">
 					<div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
 						<i class="fas fa-user-circle text-green-600 dark:text-green-400 text-2xl"></i>
@@ -94,7 +97,7 @@
 
 	<!-- Recent Orders -->
 	<div class="mb-6">
-		<div class="flex justify-between items-center mb-4">
+		<div class="mb-4 flex items-center justify-between">
 			<h2 class="text-lg font-semibold text-slate-900 dark:text-white">Order Terbaru</h2>
 			<a href="riwayat_order.php" class="text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1">
 				<span>Lihat Semua</span>
@@ -102,7 +105,7 @@
 			</a>
 		</div>
 
-		<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+		<div class="overflow-hidden rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 shadow-soft">
 			<div class="overflow-x-auto">
 				<table class="w-full">
 					<thead class="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">

@@ -19,21 +19,21 @@ if(!empty($search)){
 ?>
 
 <!-- Clean Order History Page -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 	<!-- Page Header -->
-	<div class="flex justify-between items-center mb-6">
+	<div class="mb-8 flex flex-col gap-4 rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/85 dark:bg-slate-900/75 px-6 py-6 shadow-card backdrop-blur sm:flex-row sm:items-center sm:justify-between lg:px-8">
 		<div>
 			<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Riwayat Order</h1>
 			<p class="text-sm text-slate-600 dark:text-slate-400">Lihat semua pesanan Anda</p>
 		</div>
-		<a href="dashboard.php" class="inline-flex items-center space-x-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+		<a href="dashboard.php" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-700 shadow-soft transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
 			<i class="fas fa-arrow-left"></i>
 			<span>Kembali</span>
 		</a>
 	</div>
 
 	<!-- Search Bar -->
-	<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-4 mb-6">
+	<div class="mb-6 rounded-[24px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-4 shadow-soft">
 		<form method="GET" class="flex flex-col sm:flex-row gap-3">
 			<div class="flex-1">
 				<input type="text" name="search" placeholder="Cari nomor order atau jenis paket..."
@@ -52,7 +52,7 @@ if(!empty($search)){
 	</div>
 
 	<!-- Table -->
-	<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+	<div class="overflow-hidden rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 shadow-soft">
 		<div class="overflow-x-auto">
 			<table class="w-full">
 				<thead class="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700">
@@ -170,7 +170,7 @@ if(!empty($search)){
 				}
 			}
 		?>
-		<div class="border-t border-slate-200 dark:border-slate-700 p-4 bg-slate-50 dark:bg-slate-800/50">
+		<div class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 p-4 dark:bg-slate-950/40">
 			<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
 				<div>
 					<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Total Transaksi</p>

@@ -16,23 +16,23 @@ if(isset($_POST['order_ck'])){
 ?>
 
 <!-- Clean Order Form Page -->
-<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 	<!-- Page Header -->
-	<div class="flex justify-between items-center mb-6">
+	<div class="mb-8 flex flex-col gap-4 rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/85 dark:bg-slate-900/75 px-6 py-6 shadow-card backdrop-blur sm:flex-row sm:items-center sm:justify-between lg:px-8">
 		<div>
 			<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Order Cuci Komplit</h1>
 			<p class="text-sm text-slate-600 dark:text-slate-400">Isi form untuk membuat order</p>
 		</div>
-		<a href="order_baru.php" class="inline-flex items-center space-x-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+		<a href="order_baru.php" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-700 shadow-soft transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
 			<i class="fas fa-arrow-left"></i>
 			<span>Kembali</span>
 		</a>
 	</div>
 
 	<!-- Form -->
-	<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+	<div class="rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-6 shadow-card">
 		<form action="" method="post" class="space-y-6">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 				<!-- Left Column -->
 				<div class="space-y-4">
 					<div>
@@ -117,15 +117,15 @@ if(isset($_POST['order_ck'])){
 			</div>
 		</div>
 
-		<!-- Form Actions -->
-		<div class="flex justify-end space-x-3 pt-6 border-t border-slate-200 dark:border-slate-700">
-			<button type="reset" class="px-6 py-2 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">
-				<i class="fas fa-redo mr-2"></i>Reset
-			</button>
-			<button type="submit" name="order_ck" class="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors">
-				<i class="fas fa-paper-plane mr-2"></i>Pesan Sekarang
-			</button>
-		</div>
+			<!-- Form Actions -->
+			<div class="flex flex-col-reverse gap-3 border-t border-slate-200 pt-6 dark:border-slate-800 sm:flex-row sm:justify-end">
+				<button type="reset" class="inline-flex items-center justify-center rounded-2xl bg-slate-200 px-6 py-2.5 font-medium text-slate-700 transition hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600">
+					<i class="fas fa-redo mr-2"></i>Reset
+				</button>
+				<button type="submit" name="order_ck" class="inline-flex items-center justify-center rounded-2xl bg-primary-600 px-6 py-2.5 font-medium text-white transition hover:bg-primary-700">
+					<i class="fas fa-paper-plane mr-2"></i>Pesan Sekarang
+				</button>
+			</div>
 	</form>
 </section>
 

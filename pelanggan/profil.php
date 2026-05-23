@@ -15,26 +15,26 @@ if(isset($_POST['update_profil'])){
 ?>
 
 <!-- Clean Profile Page -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 	<!-- Page Header -->
-	<div class="flex justify-between items-center mb-6">
+	<div class="mb-8 flex flex-col gap-4 rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/85 dark:bg-slate-900/75 px-6 py-6 shadow-card backdrop-blur sm:flex-row sm:items-center sm:justify-between lg:px-8">
 		<div>
 			<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Profil Saya</h1>
 			<p class="text-sm text-slate-600 dark:text-slate-400">Kelola informasi profil Anda</p>
 		</div>
-		<a href="dashboard.php" class="inline-flex items-center space-x-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+		<a href="dashboard.php" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-900 px-4 py-2.5 text-sm font-medium text-slate-700 shadow-soft transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
 			<i class="fas fa-arrow-left"></i>
 			<span>Kembali</span>
 		</a>
 	</div>
 
 	<!-- Form -->
-	<div class="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-6">
+	<div class="rounded-[28px] border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 p-6 shadow-card">
 		<form action="" method="post" class="space-y-6">
 			<input type="hidden" name="id_pelanggan" value="<?= $data_pelanggan['id_pelanggan'] ?>">
 
 			<!-- Grid Layout for Form Fields -->
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 				<!-- Nama Lengkap -->
 				<div>
 					<label for="nama" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
